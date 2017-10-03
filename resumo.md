@@ -133,9 +133,142 @@
 -  Nem todo sistema requer todas as visões. Por exemplo, um sistema a ser implementado em uma única máquina, não necessitaria de um diagrama de implementação.
 
     ![alt](Screenshot_3.jpg) 
+   
     *Visões UML*
-  
-  aaaa
 
 
-  
+---
+# Aula 03
+## Princípios de orientação a objetos
+- Um objeto possui dois componentes chave:
+	- Estado
+	- Comportamentos
+
+- Um objeto possui um **estado**:
+	- Conjunto de **informações**.
+	- Caracteriza condição na qual um objeto existe;
+	- Normalmente muda com o tempo.
+
+- Um *objeto* possui **comportamentos**
+	- Representados pelas *operações*;
+	- Definem quais mensagens o objeto sabe receber e como reaje/responde a cada uma delas;
+	- Podem modificar o estado do objeto.
+
+- Princípios da orientação a objetos
+	- **abstração**
+	- **encapsulamento**
+	- **modularidade**
+	- **hierarquia**
+
+
+- **Polimorfismo**
+	- Habilidade de esconder diferentes implementações com uma interface.
+
+- Generalização e herança
+	- **Generalização:** Agrupar classes, extraindo características comuns.
+	- **Herança:** Escreve apenas "o que é diferente" em relação ao que já existe.
+
+### Diagramas de classes e objetos
+* Na prática, o diagrama de classes é bem mais utilizado que o diagrama de objetos.
+	* O modelo de objetos também é conhecido como modelo de classses.
+* Há três níveis sucessivos de detalhamento:
+	* Análise → Especificação (Projeto) → Implementação.
+
+#### Modelo de classes de análise
+* Representa os termos do domínio do negócio:
+	* Ideias, coisas e conceitos do mundo real.
+	* **Objetivo:** Descrever o *problema* representado pelo sistama a ser desenvolvido, sem considerar características da *solução* a ser utilizada.
+	* Duas etapas:
+		* modelo conceitual (modelo de domínio)
+		* modelo da aplicação.
+	* Elementos de notação do diagrama de classes normalemnte usados na construção do modelo de análise:
+		* Classes e atributos; associações; composições e agregações (com seus adornos); classes de associação; generalizações (herança)
+
+
+		![alt](Screenshot_4.jpg)
+
+## Diagrama de classes
+* Notação UML: "Caixa" com no máximo três compartimentos exibidos. 
+	* Detalhamento utilizado depende do estágio de desenvolvimento e do nível de abstração desejado.
+
+	![alt](Screenshot_5.jpg)
+
+	![alt](Screenshot_6.jpg)
+
+
+* Associações:
+	* Para representar o fato de que os objetos podem se relacionar uns com os outros, utilizamos associações.
+	* Uma associação representa relacionamentos (ligações) que são formados entre objetos durante a *execução* do sistema.
+	* Note que, embora as associações sejam representadas entre classes do diagrama, tais associações representam **ligações possíveis** entre os *objetos* das classes envolvidas.
+
+
+	![alt](Screenshot_7.jpg)
+
+* Classe associativa:
+	* É uma classe que está ligada a uma associação, em vez de de estar ligada a outras classes.
+	* É normalmente necessária quando duas ou mais classes estão associadas, e é necessário manter informações sobre esta associação.
+	* **Sinônimo:** Classe de associação.
+
+	![alt](Screenshot_8.jpg)
+
+	* **Associações reflexivas:** Tipo especial de associação que representa ligações entre objetos que pertencem a uma mesma classe.
+	* Não indica que um objeto se associa a ele próprio.
+* Algumas particularidades das agregações/composições:
+	* São assimétricas, no sentido de que, se um objetod e **A** é parte de um objeto de **B**, o objeto de **B** não pode ser parte do objeto **A**.
+	* Propagam comportamento, no sentido de que um comportamento que se aplica a um todo automaticamente se aplica às suas partes.
+	* As partes são normalmente criadas e destruídas pelo todo. Nã classe do objeto todo, são definidas operações para adicionar e remover as partes.
+	* As diferenças entre agregação e composição não são bem definidas. A seguir, as diferenças mais marcantes entre elas.
+	* **Destruição de objetos**
+		* Na agregação, a destruição de um objeto todo não implica necessariamente na destruição do objeto parte.
+	* **Pertinência**
+		* Na composição, os objetos parte pertencem a um único todo.
+			* Por essa razão, a composição é também denominada **agregação não compartilhada**
+	* Em uma agregação, pode ser que um mesmo objeto participe como componente de vários outros objetos. 
+		* Por essa razão, a agregação é também denominada **agregação compartilhada.**
+
+	![alt](Screenshot_9.jpg)
+
+### Propriedades da herança
+* **Transitividade:** Uma classe em uma hierarquia herda propriedades e relacionamentos de *todos* os seus ancestrais.
+	* Ou seja, a herança pode ser aplicada em vários níveis, dando origem a hierarquia de generalização.
+	* Uma classe que herda propriedades de uma outra classe pode ela própria provir como superclasse.
+* **Assimetria:** Dadas duas classes A e B, se A for uma generalização de B, não pode ser uma generalização de A.
+	* Ou seja, não pode haver ciclos em uma hierarquia de generalização.
+
+### Classes abstratas
+* Classes abstratas não geram instâncias diretas.
+* São utilizadas para organizar e simplificar uma hierarquia de generalização.
+	* Propriedades comuns a diversas classes podem ser organizadas e definidas em uma classe abstrata a partir da qual as primeiras herdam.
+* Subclasses de uma classe abstrata também podem ser abstratas, mas a hierarquia deve terminar em uma ou mais classes concretas.
+
+
+----
+# Aula 03
+
+### RUP (Rational Unified Process)
+* É um processo iterativo:
+
+	![alt](Screenshot_10.jpg)
+* Principais ideias
+	* Riscos são enfrentados logo
+	* A mudança é mais gerenciável
+	* Há um maior nível de reuso
+	* A equipe pode aprender ao longo do caminho
+	* O produto tem uma melhor qualidade
+* Disciplinas:
+	 ![alt](Screenshot_11.jpg)
+
+* Processo:
+	 ![alt](Screenshot_12.jpg)
+* Fases:
+	 ![alt](Screenshot_13.jpg)
+	 * Iniciação
+		* Estabelece a visão, escopo e um plano inicial.
+	* Elaboração
+		* Projeta, implementa e testa uma arquitetura central, resolução de riscos altos, completa o plano.
+	* Construção
+		* Implementa iterativamente elementos restantes de menos risco e mais fáceis, prepara implementação.
+	* Transição
+		* Testes beta e implementação. Fornece o sistema a seus usuários.
+
+
