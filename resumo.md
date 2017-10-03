@@ -271,4 +271,136 @@
 	* Transição
 		* Testes beta e implementação. Fornece o sistema a seus usuários.
 
+---
+# Aula 04
 
+* Técnicas de identificação
+	* Várias técnicas (de uso não exclusivo) são usadas para identificar classes
+	1. Categorias de conceitos
+		1. Usar uma lista de conceitos comuns
+			1. Conceitos concretos. Ex: Edifícios, carros, etc..
+	2. Análise textual de Abbot
+		* Estratégia: Identificar termos da narrativa de casos de uso e documento de requisitos que podem sugerir classes, atributos, operações.
+		* São utilizadas diversas fontes de informação sobre o sistema: Documento e requisitos, modelos do negócio, glossários, conhecimento sobre o domínio, etc..
+		* Para cada um desses documentos, os nomes (**substantivos e adjetivos**) que aparecem no mesmo são destacados. 
+		* Após isso, os sinônimos são removidos (permanecem os **nomes** mais **significativos para o domínio do negócio** em questão).
+		* **Desvantagens:**
+			* Variações linguísticas, alguma classe importante pode não estar explícita no texto, etc..
+	3. Análise de casos de uso
+		* O caso de uso é utilizado como ponto de partida.
+			* **Premissa:** Um caso de uso correspondente a um comportamento específico do sistema. Esse comportamento somente pode ser produzido por objetos que compõem o sistema.
+		* Estudar descrição textual de cada caso para identificar classes candidatas, analisar fluxos (principais, alternativos, etc..). Após toda a análise, as classes deverão ser identificadas.
+		* Categorização BCE (Boundary, Control, Entity)
+			* *Entidade:* Usualmente objetos do domínio do problema.
+			* *Fronteira:* Atores interagem com esses objetos.
+			* *Controle:* Servem como intermediários entre objetos de fronteira e entidade, definindo o comportamento de um caso de uso específico.
+	4. Identificação dirigida a responsabilidades
+		* Nesta técnica, a ênfase está na **identificação da classe a partir de seus comportamentos** relevantes para o sistema.
+		* O método dirigido a responsabilidades enfatiza o **encapsulamento** da estrutura e do comportamento dos objetos.
+		* Os detalhes internos à classe (como ela faz para cumprir com suas responsabilidades) devem ser abstraídos.
+		* Uma **responsabilidade é uma obrigação** que um objeto tem para com o sistema no qual ele está inserido.
+		* Se um objeto tem uma responsabilidade com a qual não pode cumprir sozinho, ele deve requisitar **colaborações** de outros objetos.
+
+			![alt](Screenshot_14.jpg)
+
+## GRASP e SOLID
+### Grasp (General Responsibility Assingment Software Patterns)
+* São padrões básicos que preconizam a distribuição de responsabilidades entre classes.
+	* Responsabilidade: Um contrato ou obrigação de um objeto
+		* Responsabilidade de fazer;
+		* Responsabilidade de conhecer.
+* Padrões fundamentais
+	* Expert (Especialista)
+		* Classe que tem a informação necessária para honrar a responsabilidade.
+		* Atribuir responsabilidade ao especialista da informação (dono).
+	* Creator (Criador)
+		* Responsável pela **criação** (ativar a criação) de uma **nova instância** de alguma classe. Ex: Atribuir a classe **B** a responsabilidade de criar uma instância da classe **A** em determinadas situações. 
+	* Controller (Controlador)
+		* Responsável por **tratar os eventos** do sistema.
+		* Controlador de *caso de uso*
+			* Usar a mesma classe controladora para todos os eventos de sistema do mesmo caso de uso.
+		* Controlador por *entidades* 
+			* Usar a mesma classe controladora para todas as operações de uma entidade (ou conjunto de entidades)
+	* Low Coupling (Baixo acoplamento)
+		* Pouca dependência entre classes, ou seja, **reduzir** o número de objetos dependente e/ou **simplificar a interface** de comunicação.
+	* High Cohesion (alta coesão)
+		* Atribuir uma responsabilidade de modo que a **coesão** permaneça **alta**
+			* Cada objeto faz "**uma coisa**" só, objetos devem ter **poucas responsabilidades**.
+
+### SOLID 
+
+![alt](Screenshot_15.jpg)
+* SRP 
+	* Cada classe deve ter uma responsabilidade clara a focada.
+* OCP
+	* O código deve ser aberto para extensão mas fechado para alteração.
+* LSP
+	* Uso consciente e correto do polimorfismo
+* ISP
+	* Trata de coesão entre interfaces
+* DIP
+	* Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
+
+
+### BCE
+![alt](Screenshot_16.jpg)
+
+
+### VCP
+* Uma visão de classes Participantes é um diagrama das classes cujos objetos participam da realização de determinado caso de uso.
+* Em uma VCP, são representados objetos de fronteira, de entidade e de controle para um caso de uso particular.
+* Uma **VCP** é definida através da utilização da categorização **BCE**.
+
+![alt](Screenshot_17.jpg)
+
+![alt](Screenshot_18.jpg)
+
+* Regras estruturais em uma **VCP**
+	* **Atores** somente podem interagir com objetos de **fronteira**.
+	* Objetos de **fronteira** somente podem interagir com **controladores e **atores**.
+	* Objetos de **entidade** somente podem interagir (receber requisições) com **controladores**
+	* **Controladores** somente podem interagir com objetos de **fronteira** e objetos de **entidade**, e com (eventuais) outros **controladores**.
+
+---
+# Padrões de projeto
+### Padrões Singleton e Stragegy
+* É da natureza do desenvolvimento de software o fato de que os **mesmos problemas** tendem a acontecer diversas vezes.
+* Um **Padrão de projeto** corresponde a um esboço de uma **solução reusável** para um problema comumente encontrado em um contexto particular.
+* **Design Pattern**
+	* Um Pattern descreve um problema que ocorre com frequência em nosso ambiente, e então, explica a essência da solução para este problema, de forma que tal solução possa ser utilizada milhões de outras vezes.
+	* **Algoritmos** não são padrões de projeto!!
+		* São soluções prontas para resolver problemas computacionais, não de projetos.
+* Por que aprender padrões ?
+	* **Identificar problemas comuns** de engenharia de software
+	* **Utilizar soluções testadas** e comprovadamente eficientes.
+	* Padrões utilizam as **melhores práticas** de OO com herança, polimorfismo, composição, abstração, etc..
+	* **Vocabulário comum** para comunicar-se em alto nível.
+	* Todo padrão inclui:
+		* Nome
+		* Problema
+		* Solução
+		* Consequencias
+	![alt](Screenshot_19.jpg)
+* Os padrões GoF foram divididos em três categorias:
+	* **Criacionais:** Procuram separar a operação de uma aplicação de como os seus objetos são criados.
+	* **Estruturais:** Provêem generalidade para a que a estrutura da solução possa ser estendida no futuro.
+	* **Comportamentais:** Utilizam herança para distribuir o comportamento entre subclasses, ou agregação e composição para construir comportamento complexo a partir de componentes mais simples.
+
+
+## **Singleton**
+* Usado apra **restringir instâncias de uma classe** a apenas um objeto.
+* Essa prática é útil quando precisamos somente de **um objeto para coordenar ações** ao longo do sistema.
+* Sempre que for necessário algo **global**, pense em um **Singleton**.
+	![alt](Screenshot_20.jpg)
+	* Deve haver um modo de **obter essa instância globalmente.**
+	* Um singleton se resume a uma classe com um **método que cria uma nova instância, se ela já não existir**. Se a instância já existir, simplesmente retorna a instância.
+	* Objeto do com o construtor no modo **protegido**, para que não possa ser instanciado de outra maneira.
+
+## **Strategy**
+* **Permite a seleção de algoritmos** durante a execução do software.
+* Permite **encapsular estes algoritmos como um objeto**, e torná-los intercambiáveis. Ex: Exemplo mário em sala de aula..
+
+	![alt](Screenshot_21.jpg)
+* Exemplos de uso:
+	* Validação de dados de entrada em um formulário..etc.
+* 
