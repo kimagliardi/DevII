@@ -71,3 +71,13 @@
     *   Escopo de uma variável pode ser determinado apenas olhando para o código fonte.
 *  **Escopo dinâmico**
     *  Quando programa executa, o mesmo de uso de **x** pode referir-se a diferentes declarações.
+* Exemplo:
+    * **public static int x;**
+    * Compilador aloca em tempo de compilação um espaço na memória para a variável **x**.
+* Vínculo estático x dinâmico dos noems para as localizações.
+    ![alt](Screenshot_9.jpg)
+
+* Vúnculo estático X dinâmico das localizações para os valores
+    ![alt](Screenshot_10.jpg)
+
+    ![alt](Screenshot_11.jpg)
