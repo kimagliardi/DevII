@@ -664,3 +664,31 @@ Uma comparação sobre como as arquiteturas superescalares X VLIW trabalham
 
 
     ![alt](multicomp.jpg)
+
+
+    ---
+    Correção da prova GA
+
+
+    * **Por que as palavras são alinhadas na memória MIPS? Explique e, após, mostre com um exemplo o que aconteceria em caso um dado desalinhado fosse acessado na memória.
+
+        * O MIPS utiliza alinhamento de memória com o objetivo de minimizar o número de acessos à memória para buscar os dados. Quando dados desalinhados são lidos, o processador precisa ler mais pedaços (de acordo com a granularidade considerada) e deslocar (eliminar) os bytes "indesejados". Após, os pedaços são reunidos para colocação no registro, resultando em uma grande sobrecarga.
+        ![alt](riscAccess.jpg)
+
+    * **Com relação a arquitetura VLIW**
+        1. **Qual é a principal diferença para uma arquitetura superescalar?**
+            * **Superescalares:** As dependências são resolvidas em tempo de execução por um hardware dedicado.
+            * **VLIW:** As dependências são resolvidas pelo compilador em tempo de compilação.
+        2. **O que é a técnica de loop unrolling no escalonamento cíclico?**
+            * O código do loop é reescrito sequenciamente até se conseguir um padrão de instruções que se repetem ao longo do tempo. Esse padrão é denominado kernel do laço e será realizado por uma (ou mais) instruções VLIW. Cada instrução VLIW pode conter operações de diferentes ciclos do laço (representado por meio de índices).
+
+
+
+    * **Referente à memória, responda:**
+        
+        1. Qual é a finalidade de um projeto hierárquico de memória ?
+            * Proporcionar a ilusão da quantidade de memória próxima à tecnologia mais barata (disco magnético) e o tempo de acesso próximo à tecnologia de maior custo (SRAM). Tudo isso com custo reduzido. Ou seja, busca-se reduzir o tempo de acesso à memória, e ao mesmo tempo, possuir uma grande quantidade de memória com um custo reduzido.
+        2. **Como melhorar o desempenho de memória?**
+            * Considerar tanto a **redução miss/falta como a redução do tempo de penalidade de miss/falta**.
+            Para melhorar o desempenho, é necessário reduzir a latência de acesso à memória. Se a latência está alta, é poruqe estão acontecendo muitos misses na cache. Portanto, deve-se reduzir a taxa do miss modificando-se a configuração da cache (ou seja, utilizando-se uma política de substituição de blocos mais eficiente) e também reduzindo-se a penalidade (latência) dos misses por meio de mais níveis na hierarquia de memória.
+        
